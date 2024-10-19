@@ -36,7 +36,6 @@ class NotificationView extends StatelessWidget {
   }
 }
 
-
 class UserindexView extends StatefulWidget {
   const UserindexView({Key? key}) : super(key: key);
 
@@ -58,16 +57,15 @@ class _UserindexViewState extends State<UserindexView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue,
         actions: [
           IconButton(
-  icon: const Icon(Icons.login, size: 30, color: Colors.white),
-  onPressed: () {
-    // Call the logout method
-    AuthService().logout(context);
-  },
-),
-
+            icon: const Icon(Icons.login, size: 30, color: Colors.white),
+            onPressed: () {
+              // Call the logout method
+              AuthService().logout(context);
+            },
+          ),
         ],
         automaticallyImplyLeading: false,
         shape: const BeveledRectangleBorder(
@@ -80,19 +78,14 @@ backgroundColor: Colors.blue,
         child: ConvexAppBar(
           style: TabStyle.textIn,
           items: const [
-       
-            TabItem(
-                icon: Icons.check_box_outlined,
-                title: 'จองหอพัก'),
-            TabItem(
-                icon: Icons.person,
-                title: 'Profile'),
+            TabItem(icon: Icons.check_box_outlined, title: 'จองห้องประชุม'),
+            TabItem(icon: Icons.person, title: 'Profile'),
           ],
           initialActiveIndex: _selectedIndex,
           onTap: _onItemTapped, // Update selected index
           activeColor: Colors.white,
           color: Colors.white,
-          backgroundColor:  Colors.blue,
+          backgroundColor: Colors.blue,
           height: 65,
         ),
       ),
@@ -108,16 +101,16 @@ backgroundColor: Colors.blue,
     switch (_selectedIndex) {
       case 0:
         return StatusPage(); // Display DriverView for index 0
-      
+
       case 1:
-        return ProfilePage(token: userProvider.accessToken); // ใช้ token จาก UserProvider
+        return ProfilePage(
+            token: userProvider.accessToken); // ใช้ token จาก UserProvider
       default:
-        return const Center(child: Text('Unknown View')); // Default fallback view
+        return const Center(
+            child: Text('Unknown View')); // Default fallback view
     }
   }
 }
-
-
 
 class Style extends StyleHook {
   @override
